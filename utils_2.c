@@ -1,8 +1,12 @@
 #include "libft/libft.h"
 
-void	init_b(int *arr_b)
+void	init_b(int *arr_b, int len)
 {
+	int	i;
 
+	i = 0;
+	while (i < len)
+		arr_b[i++] = '\0';
 }
 
 int	find_ind_min(int *arr_a, int len)
@@ -23,36 +27,37 @@ int	find_ind_min(int *arr_a, int len)
 	return (min_ind);
 }
 
-void	swap_a(int *arr_a, int len, int print)
+void	one_forward(int *arr, int ind, int len)
 {
+	int	i;
 	int	tmp;
 
-	if (len >= 2)
+	i = 0;
+	while (ind < len - 1)
 	{
-		tmp = arr_a[0];
-		arr_a[0] = arr_a[1];
-		arr_a[1] = tmp;
-		if (print)
-			ft_putstr_fd("sa\n", 1);
+		tmp = arr[ind + 1];
+		arr[ind + 1] = arr[ind];
+		ind++;
+		i++;
 	}
 }
 
-void	swap_b(int *arr_b, int len, int print)
+void	one_back(int *arr, int ind)
 {
+	int	i;
 	int	tmp;
 
-	if (len >= 2)
+	i = 0;
+	while (ind > 0)
 	{
-		tmp = arr_b[0];
-		arr_b[0] = arr_b[1];
-		arr_b[1] = tmp;
-		if (print)
-			ft_putstr_fd("sb\n", 1);
+		tmp = arr[ind - 1];
+		arr[ind - 1] = arr[ind];
+		ind--;
+		i++;
 	}
 }
 
-void	ss(int *arr_a, int *arr_b, int len)
+void	take_one(int *src, int *dst, int len)
 {
-	swap_a(arr_a, len, 0);
-	swap_b(arr_b, len, 0);
+	dst[len] = src[len];
 }

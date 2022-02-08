@@ -3,15 +3,7 @@
 
 int	sort(int *arr_a, int *arr_b, int len)
 {
-	int	mv;
-
-	mv = 0;
-	if (find_ind_min(arr_a, len) > len / 2)
-		reverse
-	else
-		swap
-
-	push
+	
 }
 
 int	execute(int *arr_a, int len)
