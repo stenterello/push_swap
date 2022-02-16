@@ -27,7 +27,7 @@ fclean: clean
 
 re: fclean all
 
-$(LIBPRINT):
-	$(MAKE) -C ./includes
+$(LIBPRINTF):
+	$(MAKE) -C ./includes/
 
 .PHONY: all clean fclean re
