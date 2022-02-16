@@ -1,7 +1,13 @@
 NAME=push_swap
 CC=gcc
 FLAGS=-Wall -Werror -Wextra -g
-SRCS=main.c checks.c utils.c
+SRCS=main.c \
+		checks.c \
+		utils.c \
+		ops.c \
+		ops_2.c \
+		ops_3.c \
+		ops_utils.c
 OBJS=$(SRCS:.c=.o)
 LIBPRINTF=./includes/libftprintf.a
 
