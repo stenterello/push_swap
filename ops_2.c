@@ -15,11 +15,14 @@ void	rb(t_stack *b, int pr)
 {
 	int	tmp;
 
-	tmp = b->arr[0];
-	move_one_up(b);
-	b->arr[b->len - 1] = tmp;
-	if (pr)
-		ft_printf("rb\n");
+	if (b->len > 1)
+	{
+		tmp = b->arr[0];
+		move_one_up(b);
+		b->arr[b->len - 1] = tmp;
+		if (pr)
+			ft_printf("rb\n");
+	}
 }
 
 void	rr(t_stack *a, t_stack *b)

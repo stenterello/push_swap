@@ -2,7 +2,7 @@
 
 void	die(char *str)
 {
-	ft_putendl_fd(str, 1);
+	ft_putendl_fd(str, 2);
 	exit(-1);
 }
 
@@ -57,4 +57,18 @@ void	find_half(t_stack *a)
 		}
 		i++;
 	}
+}
+
+int	find_ind(t_stack *st, int val)
+{
+	int	i;
+
+	i = 0;
+	while (i < st->len)
+	{
+		if (st->arr[i] == val)
+			return (i);
+		i++;
+	}
+	return (0);
 }

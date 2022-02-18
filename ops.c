@@ -45,6 +45,8 @@ void	pa(t_stack *a, t_stack *b)
 		move_one_up(b);
 		move_one_down(a);
 		a->arr[0] = tmp;
+		b->len--;
+		a->len++;
 		ft_printf("pa\n");
 	}
 }
@@ -59,6 +61,8 @@ void	pb(t_stack *a, t_stack *b)
 		move_one_up(a);
 		move_one_down(b);
 		b->arr[0] = tmp;
+		a->len--;
+		b->len++;
 		ft_printf("pb\n");
 	}
 }

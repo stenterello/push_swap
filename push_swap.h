@@ -10,6 +10,7 @@ typedef struct s_stack
 	int	max;
 	int	half;
 	int	len;
+	int	last_bench;
 }				t_stack;
 
 void	die(char *str);
@@ -30,5 +31,14 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a, int pr);
 void	rrb(t_stack *b, int pr);
 void	rrr(t_stack *a, t_stack *b);
+int		find_ind(t_stack *st, int val);
+void	find_min(t_stack *st);
+void	find_max(t_stack *st);
+void	sort_small(t_stack *a);
+void	sort_medium(t_stack *a, t_stack *b);
+void	sort(t_stack *a, t_stack *b);
+int		in_order(t_stack *a);
+int		in_rev_order(t_stack *st);
+void	find_values(t_stack *a);
 
 #endif
