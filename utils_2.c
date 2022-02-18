@@ -51,7 +51,7 @@ int	in_rev_order(t_stack *st)
 	i = 0;
 	while (i < st->len)
 	{
-		if (i > 0 && ret < st->arr[i])
+		if (i > 0 && ret > st->arr[i])
 			return (0);
 		ret = st->arr[i++];
 	}

@@ -10,7 +10,7 @@ typedef struct s_stack
 	int	max;
 	int	half;
 	int	len;
-	int	last_bench;
+	int	last;
 }				t_stack;
 
 void	die(char *str);
