@@ -1,49 +1,46 @@
 #include "push_swap.h"
 
-//static void	take_min_and_push(t_stack *a, t_stack *b)
-//{
-//	if (find_ind(a, a->min) < a->len / 2)
-//	{
-//		while (find_ind(a, a->min))
-//			ra(a, 1);
-//	}
-//	else
-//	{
-//		while (find_ind(a, a->min))
-//			rra(a, 1);
-//	}
-//	pb(a, b);
-//}
-//
-//static void	take_max_and_push(t_stack *a, t_stack *b)
-//{
-//	if (find_ind(a, a->max) < a->len / 2)
-//	{
-//		while (find_ind(a, a->max))
-//			ra(a, 1);
-//	}
-//	else
-//	{
-//		while (find_ind(a, a->max))
-//			rra(a, 1);
-//	}
-//	if (!in_order(a))
-//		pb(a, b);
-//}
-
 int	define_range(t_stack *a, int range)
 {
-	if (a->len > 500)
-		return (range / 11);
-	else if (a->len > 100)
-		return (range / 5);
+	if (a->len > 400)
+		return (range / 10);
+	else if (a->len > 90)
+		return (range / 8);
 	else
 		return (range / 5);
 }
 
+int	next_smaller(t_stack *b, int c)
+{
+	int	i;
+	int	diff;
+	int	flag;
+	int	next;
+
+	i = 0;
+	flag = 0;
+	next = 0;
+	while (i < b->len)
+	{
+		if (!flag && b->arr[i] < c)
+		{
+			diff = c - b->arr[i];
+			flag = 1;
+			next = b->arr[i];
+		}
+		else if (b->arr[i] < c && c - b->arr[i] < diff)
+		{
+			diff = c - b->arr[i];
+			next = b->arr[i];
+		}
+		i++;
+	}
+	return (next);
+}
+
 int	define_flag(t_stack *b, int c)
 {
-	if (b->len > 1 && c < b->arr[0])
+	if (c < b->max && c > b->min && b->arr[0] != next_smaller(b, c))
 		return (1);
 	return (0);
 }
@@ -89,11 +86,13 @@ void	to_b(t_stack *a, t_stack *b, int c)
 			rr(a, b);
 		else if (find_ind(a, c) > a->len / 2)
 			rra(a, 1);
-		else
+		else if (!flag)
 			ra(a, 1);
 	}
-    while (define_flag(b, c) && c > b->min)
+    while (define_flag(b, c) && c > b->min && c < b->max)
+	{
         rb(b, 1);
+	}
 	pb(a, b);
 	find_values(b);
 	find_values(a);
@@ -168,10 +167,11 @@ void	sort(t_stack *a, t_stack *b)
 			else
 				i++;
 		}
-		min += range2;
-		max += range2;
-        find_values(a);
-        sort_a(a, b->arr[0]);
+		if (min != a->min)
+		{
+			find_values(a);
+		    sort_a(a, b->arr[0]);
+		}
         i = 0;
         a->last = b->arr[0];
 		while (b->len)
@@ -179,13 +179,18 @@ void	sort(t_stack *a, t_stack *b)
         	pa(a, b);
             i++;
         }
-        find_values(a);
-        while (find_ind(a, a->last) != a->len - 1)
-        {
-            if (find_ind(a, a->last) > a->len / 2)
-                rra(a, 1);
-            else
-                ra(a, 1);
-        }
+		if (min != a->min)
+		{
+			while (find_ind(a, a->last) != a->len - 1)
+			{
+				if (find_ind(a, a->last) > a->len / 2)
+					rra(a, 1);
+				else
+					ra(a, 1);
+			}
+		}
+		find_values(a);
+		min += range2;
+		max += range2;
 	}
 }

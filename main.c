@@ -1,17 +1,5 @@
 #include "push_swap.h"
 
-static void	print(t_stack *st)
-{
-	int	i;
-
-	i = 0;
-	while (i < st->len)
-	{
-		ft_putnbr_fd(st->arr[i++], 1);
-		ft_printf("\n");
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	a;
@@ -36,10 +24,6 @@ int	main(int argc, char **argv)
 			sort_medium(&a, &b);
 		else if (!in_order(&a))
 			sort(&a, &b);
-		ft_printf("A\n");
-		print(&a);
-		ft_printf("B\n");
-		print(&b);
 		free(a.arr);
 		free(b.arr);
 	}
