@@ -35,6 +35,7 @@ int		find_ind(t_stack *st, int val);
 void	find_min(t_stack *st);
 void	find_max(t_stack *st);
 void	sort_small(t_stack *a);
+void	sort_rev_small(t_stack *b);
 void	sort_medium(t_stack *a, t_stack *b);
 void	sort(t_stack *a, t_stack *b);
 int		in_order(t_stack *a);

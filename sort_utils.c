@@ -38,3 +38,24 @@ void	sort_medium(t_stack *a, t_stack *b)
 	if (!in_order(a))
 		sa(a, 1);
 }
+
+void	sort_rev_small(t_stack *b)
+{
+	if (b->min == b->arr[0] && b->max == b->arr[2])
+    {
+        sb(b, 1);
+        rrb(b, 1);
+    }
+    if (b->min == b->arr[1] && b->max == b->arr[2])
+        rrb(b, 1);
+    else if (b->max == b->arr[1] && b->min == b->arr[2])
+        sb(b, 1);
+    else if (b->min == b->arr[0] && b->max == b->arr[1])
+        rb(b, 1);
+    else if (b->max == b->arr[0] && b->min == b->arr[1])
+    {
+        rb(b, 1);
+        sb(b, 1);
+        rrb(b, 1);
+    }
+}

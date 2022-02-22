@@ -60,6 +60,7 @@ clean:
 	$(MAKE) clean -C ./libft
 	rm -rf objs/*.o
 	rm -rf srcs/*.o
+	mkdir objs
 
 fclean: clean
 	$(MAKE) fclean -C ./libft
