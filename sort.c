@@ -148,14 +148,14 @@ int	find_min_arr(int *arr, int len)
 
 int	decide(t_stack *a, t_stack *b)
 {
-	int	tmp[20];
+	int	tmp[100];
 	int	min;
 	int	i;
 
 	i = 0;
-	if (b->len > 20)
+	if (b->len > 100)
 	{
-		while (i < 20)
+		while (i < 100)
 		{
 			if (b->arr[i] < a->max && b->arr[i] > a->min)
 			{
@@ -171,7 +171,7 @@ int	decide(t_stack *a, t_stack *b)
 						tmp[i] = find_ind(b, b->arr[i]) + 1;
 					}
 				}
-				else if ((tmp[i] > a->len / 2 && find_ind(b, b->arr[i]) < b->len / 2) || tmp[i] < a->len / 2 && find_ind(b, b->arr[i]) > b->len / 2)
+				else if ((tmp[i] > a->len / 2 && find_ind(b, b->arr[i]) < b->len / 2) || (tmp[i] < a->len / 2 && find_ind(b, b->arr[i]) > b->len / 2))
 				{
 					tmp[i] = tmp[i] + find_ind(b, b->arr[i]) + 1;
 				}
@@ -192,12 +192,14 @@ int	decide(t_stack *a, t_stack *b)
 				tmp[i] = find_ind(a, a->min);
 				if (tmp[i] > a->len / 2)
 					tmp[i] = a->len - tmp[i];
+				tmp[i] += find_ind(b, b->arr[i]);
 			}
 			else if (b->arr[i] > a->max)
 			{
 				tmp[i] = find_ind(a, a->max) + 1;
 				if (tmp[i] > a->len / 2)
 					tmp[i] = a->len - tmp[i];
+				tmp[i] += find_ind(b, b->arr[i]);
 			}
 			i++;
 		}
@@ -291,23 +293,31 @@ void    find_place_and_insert2(t_stack *a, t_stack *b, int ind)
         if (tmp > a->len / 2)
         {
             tmp = a->len - tmp;
-            while (i++ < tmp && ind > b->len / 2 && ind)
+            while (i < tmp && ind > b->len / 2 && ind)
 			{
                 rrr(a, b);
 				change_ind(0, &ind, b->len);
+				i++;
 			}
-			while (i++ < tmp)
+			while (i < tmp)
+			{
 				rra(a, 1);
+				i++;
+			}
         }
         else
         {
-            while (i++ < tmp && ind < b->len / 2 && ind)
+            while (i < tmp && ind < b->len / 2 && ind)
 			{
                 rr(a, b);
-				change_ind(1, &ind, b->len);
+				change_ind(0, &ind, b->len);
+				i++;
 			}
-			while (i++ < tmp)
+			while (i < tmp)
+			{
 				ra(a, 1);
+				i++;
+			}
         }
 		while (ind)
 		{
@@ -384,7 +394,14 @@ void    find_place_and_insert2(t_stack *a, t_stack *b, int ind)
 				change_ind(0, &ind, b->len);
 			}
 			while (find_ind(a, a->max))
-            	ra(a, 1);
+			{
+				ra(a, 1);
+				if (!find_ind(a, a->max))
+				{
+					ra(a, 1);
+					break ;
+				}
+			}
         }
 		while (ind)
 		{
