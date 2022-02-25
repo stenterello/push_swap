@@ -6,7 +6,7 @@ void	sa(t_stack *a, int pr)
 
 	if (a->len > 1)
 	{
-		tmp =  a->arr[0];
+		tmp = a->arr[0];
 		a->arr[0] = a->arr[1];
 		a->arr[1] = tmp;
 		if (pr)
@@ -20,7 +20,7 @@ void	sb(t_stack *b, int pr)
 
 	if (b->len > 1)
 	{
-		tmp =  b->arr[0];
+		tmp = b->arr[0];
 		b->arr[0] = b->arr[1];
 		b->arr[1] = tmp;
 		if (pr)

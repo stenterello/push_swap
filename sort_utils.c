@@ -38,3 +38,43 @@ void	sort_medium(t_stack *a, t_stack *b)
 	if (!in_order(a))
 		sa(a, 1);
 }
+
+int	to_do(t_stack *a, int min_limit, int limit)
+{
+	int	i;
+
+	i = 0;
+	while (i < a->len)
+	{
+		if (a->arr[i] >= min_limit && a->arr[i] < limit)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	range(t_stack *a, t_stack *b, int min_limit, int limit)
+{
+	while (to_do(a, min_limit, limit))
+	{
+		if (a->arr[0] >= min_limit && a->arr[0] <= limit)
+			pb(a, b);
+		else
+			ra(a, 1);
+		find_values(b);
+	}
+}
+
+void	change_ind(int flag, int *ind, int len)
+{
+	// flag = 0 sottrai
+	// flag = 1 incrementa
+	if (!flag)
+		(*ind)--;
+	else if (flag)
+	{
+		(*ind)++;
+		if (*ind == len)
+			*ind = 0;
+	}
+}

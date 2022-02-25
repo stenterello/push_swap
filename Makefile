@@ -10,7 +10,12 @@ SRCS=main.c \
 		ops_3.c \
 		ops_utils.c \
 		sort.c \
-		sort_utils.c
+		sort_utils.c \
+		values.c \
+		find.c \
+		decide.c \
+		treat.c
+
 OBJS=$(SRCS:.c=.o)
 LIBPRINTF=./includes/libftprintf.a
 
