@@ -21,11 +21,42 @@ int	find_min_arr(int *arr, int len)
 
 	i = 0;
 	ret = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
 		if (arr[i] + i < arr[ret])
 			ret = i;
 		i++;
 	}
 	return (ret);
+}
+
+int	find_max_arr(int *arr, int len)
+{
+	int	ret;
+	int	i;
+
+	i = 0;
+	ret = 0;
+	arr[0] = arr[i];
+	while (i < len - 1)
+	{
+		if (arr[i] > arr[ret])
+			ret = arr[i];
+		i++;
+	}
+	return (ret);
+}
+
+int	find_ind_arr(int *arr, int c, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (arr[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

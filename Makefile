@@ -14,7 +14,8 @@ SRCS=main.c \
 		values.c \
 		find.c \
 		decide.c \
-		treat.c
+		treat.c \
+		seq.c
 
 OBJS=$(SRCS:.c=.o)
 LIBPRINTF=./includes/libftprintf.a

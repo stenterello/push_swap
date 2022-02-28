@@ -27,7 +27,7 @@ void	find_place_and_insert(t_stack *a, t_stack *b, int ind)
 	if (b->arr[ind] < a->max && b->arr[ind] > a->min)
 	{
 		treat_between(a, b, &ind, &i);
-		move_b(&ind, b);
+		//move_b(&ind, b);
 	}
 	else if (b->arr[ind] < a->min)
 	{
@@ -46,7 +46,7 @@ void	fill_range(t_stack *a, t_stack *b, int min_limit, int flag)
 {
 	int	mvs;
 
-	if (flag)
+	if (flag && !a->len)
 	{
 		pa(a, b);
 		pa(a, b);
@@ -67,21 +67,14 @@ void	fill_range(t_stack *a, t_stack *b, int min_limit, int flag)
 void	sort(t_stack *a, t_stack *b)
 {
 	int	s_half;
-	int	f_half;
-	int	t_half;
 
+	get_seq(a);
 	find_values(a);
 	s_half = get_half(a, a->min, a->max);
-	f_half = get_half(a, a->min, s_half);
-	t_half = get_half(a, s_half, a->max);
-	range(a, b, a->min, f_half);
-	range(a, b, f_half, s_half);
-	range(a, b, s_half, t_half);
-	range(a, b, t_half, a->max);
-	fill_range(a, b, t_half, 1);
-	fill_range(a, b, s_half, 0);
-	fill_range(a, b, f_half, 0);
-	fill_range(a, b, b->min, 0);
+	range(a, b, s_half, a->max);
+	range(a, b, a->min, a->max);
+	fill_range(a, b, s_half, 1);
+	fill_range(a, b, a->min, 0);
 	find_values(a);
 	while (find_ind(a, a->min) > a->len / 2 && find_ind(a, a->min))
 		rra(a, 1);

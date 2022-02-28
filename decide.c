@@ -18,34 +18,54 @@ void	decide_in_between(t_stack *a, t_stack *b, int *tmp, int i)
 		if (tmp[i] > find_ind(b, b->arr[i]))
 			tmp[i] = a->len - tmp[i] + 1;
 		else
-			tmp[i] = a->len - find_ind(b, b->arr[i]) + 1;
+			tmp[i] = b->len - find_ind(b, b->arr[i]) + 1;
 	}
 }
 
 void	decide_min(t_stack *a, t_stack *b, int *tmp, int i)
 {
-	tmp[i] = find_ind(a, a->min);
-	if (tmp[i] > a->len / 2)
-		tmp[i] = a->len - tmp[i];
-	tmp[i] += find_ind(b, b->arr[i]);
+	int	f;
+	int	s;
+
+	f = find_ind(a, a->min);
+	s = find_ind(b, b->arr[i]);
+	if (f > a->len / 2)
+		f = a->len - f;
+	if (s > b->len / 2)
+		s = b->len - s;
+	if (f > s)
+		tmp[i] = f;
+	else
+		tmp[i] = s;
 }
 
 void	decide_max(t_stack *a, t_stack *b, int *tmp, int i)
 {
-	tmp[i] = find_ind(a, a->max) + 1;
-	if (tmp[i] > a->len / 2)
-		tmp[i] = a->len - tmp[i];
-	tmp[i] += find_ind(b, b->arr[i]);
+	int	f;
+	int	s;
+
+	f = find_ind(a, a->max);
+	s = find_ind(b, b->arr[i]);
+	if (f > a->len / 2)
+		f = a->len - f;
+	if (s > b->len / 2)
+		s = b->len - s;
+	if (f > s)
+		tmp[i] = f;
+	else
+		tmp[i] = s;
 }
 
 int	decide(t_stack *a, t_stack *b)
 {
-	int	tmp[500];
+	int	tmp[510];
 	int	i;
 	int	len;
 
 	i = 0;
-	if (b->len <= 500)
+	find_values(a);
+	find_values(b);
+	if (b->len <= 510)
 		len = b->len;
 	else
 		len = 500;

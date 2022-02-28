@@ -30,10 +30,22 @@ void	treat_between(t_stack *a, t_stack *b, int *ind, int *i)
 		while (*i < a->len - tmp && *ind > b->len / 2 && *ind)
 		{
 			rrr(a, b);
-			change_ind(0, ind, b->len);
+			change_ind(1, ind, b->len);
 			(*i)++;
 		}
 		treat_between_helper(a, tmp, i, 0);
+		while (*ind > b->len / 2)
+		{
+			rrb(b, 1);
+			change_ind(1, ind, b->len);
+			ft_printf("OOOO\n");
+		}
+		while (*ind)
+		{
+			rb(b, 1);
+			change_ind(0, ind, b->len);
+			ft_printf("8888\n");
+		}
 	}
 	else
 	{
@@ -87,7 +99,7 @@ void	treat_max(t_stack *a, t_stack *b, int *ind)
 	}
 	else
 	{
-		while (find_ind(a, a->max) && *ind > b->len / 2 && *ind)
+		while (find_ind(a, a->max) && *ind < b->len / 2 && *ind)
 		{
 			rr(a, b);
 			change_ind(0, ind, b->len);

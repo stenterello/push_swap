@@ -42,22 +42,42 @@ void	sort_medium(t_stack *a, t_stack *b)
 int	to_do(t_stack *a, int min_limit, int limit)
 {
 	int	i;
+	int	ret;
 
 	i = 0;
+	ret = 0;
 	while (i < a->len)
 	{
-		if (a->arr[i] >= min_limit && a->arr[i] < limit)
-			return (1);
+		if (a->arr[i] >= min_limit && a->arr[i] <= limit)
+			ret = 1;
 		i++;
 	}
-	return (0);
+	return (ret);
+}
+
+int	to_do_a(t_stack *a, int min_limit, int limit)
+{
+	int	i;
+	int	ret;
+
+	i = 0;
+	ret = 0;
+	while (i < a->len)
+	{
+		if (a->arr[i] >= min_limit && a->arr[i] <= limit
+			&& !in_best(a, a->arr[i]))
+			ret = 1;
+		i++;
+	}
+	return (ret);
 }
 
 void	range(t_stack *a, t_stack *b, int min_limit, int limit)
 {
-	while (to_do(a, min_limit, limit))
+	while (to_do_a(a, min_limit, limit))
 	{
-		if (a->arr[0] >= min_limit && a->arr[0] <= limit)
+		if (a->arr[0] >= min_limit && a->arr[0] <= limit
+			&& !in_best(a, a->arr[0]))
 			pb(a, b);
 		else
 			ra(a, 1);
@@ -67,8 +87,6 @@ void	range(t_stack *a, t_stack *b, int min_limit, int limit)
 
 void	change_ind(int flag, int *ind, int len)
 {
-	// flag = 0 sottrai
-	// flag = 1 incrementa
 	if (!flag)
 		(*ind)--;
 	else if (flag)

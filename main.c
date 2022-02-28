@@ -26,6 +26,8 @@ int	main(int argc, char **argv)
 			sort(&a, &b);
 		free(a.arr);
 		free(b.arr);
+		free(a.index);
+		free(a.best);
 	}
 	return (0);
 }

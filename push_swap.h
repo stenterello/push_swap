@@ -10,7 +10,9 @@ typedef struct s_stack
 	int	max;
 	int	half;
 	int	len;
-	int	last;
+	int	*index;
+	int	*best;
+	int	best_len;
 }				t_stack;
 
 void	die(char *str);
@@ -33,6 +35,8 @@ void	rrb(t_stack *b, int pr);
 void	rrr(t_stack *a, t_stack *b);
 int 	find_place(t_stack *a, int c);
 int		find_min_arr(int *arr, int len);
+int		find_max_arr(int *arr, int len);
+int		find_ind_arr(int *arr, int c, int len);
 int		find_ind(t_stack *st, int val);
 void	find_min(t_stack *st);
 void	find_max(t_stack *st);
@@ -54,8 +58,12 @@ void	treat_between(t_stack *a, t_stack *b, int *ind, int *i);
 void	treat_min(t_stack *a, t_stack *b, int *ind);
 void	treat_max(t_stack *a, t_stack *b, int *ind);
 int		to_do(t_stack *a, int min_limit, int limit);
+int		to_do_a(t_stack *a, int min_limit, int limit);
 void	range(t_stack *a, t_stack *b, int min_limit, int limit);
 void	change_ind(int flag, int *ind, int len);
-
+int		count_seq(t_stack *a, int i);
+int		search_seq(t_stack *a);
+void	get_seq(t_stack *a);
+int		in_best(t_stack *a, int c);
 
 #endif
