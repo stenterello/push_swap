@@ -33,7 +33,7 @@ void	rb(t_stack *b, int pr)
 		move_one_up(b);
 		b->arr[b->len - 1] = tmp;
 		if (pr)
-			ft_printf("rbciao\n");
+			ft_printf("rb\n");
 	}
 }
 

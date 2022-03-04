@@ -32,7 +32,6 @@ int	main(int argc, char **argv)
 			sort(&a, &b);
 			free(a.best);
 		}
-		//free(a.arr);
 		free(b.arr);
 	}
 	return (0);

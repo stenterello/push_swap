@@ -34,9 +34,11 @@ OBJS=$(SRCS:.c=.o)
 
 LIBPRINTF=./includes/libftprintf.a
 
-
 $(NAME): $(OBJS) $(LIBPRINTF) main.o
-	$(CC) $(FLAGS) $(MAINSRC) $(SRCS) $(LIBPRINTF) -o $(NAME)
+	$(CC) $(FLAGS) $(MAINSRC) $(SRCS) $(LIBPRINTF) -o $(NAME)	
+
+$(LIBPRINTF):
+	$(MAKE) -C ./includes/
 
 all: $(NAME)
 
@@ -46,14 +48,12 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(CHECKERNAME)
 	$(MAKE) fclean -C ./includes
 
-bonus: $(NAME) checker.o
+bonus: all
 	$(CC) $(FLAGS) $(CHECKERMAIN) $(CHECKERSRC) $(SRCS) $(LIBPRINTF) -o $(CHECKERNAME)
 
 re: fclean all
 
-$(LIBPRINTF):
-	$(MAKE) -C ./includes/
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean bonus re

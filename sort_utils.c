@@ -37,8 +37,10 @@ void	sort_medium(t_stack *a, t_stack *b)
 	while (a->len > 3)
 	{
 		find_min(a);
-		while (find_ind(a, a->min))
+		while (find_ind(a, a->min) < a->len / 2 && find_ind(a, a->min))
 			ra(a, 1);
+		while (find_ind(a, a->min) >= a->len / 2 && find_ind(a, a->min))
+			rra(a, 1);
 		pb(a, b);
 	}
 	find_values(a);
