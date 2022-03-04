@@ -16,22 +16,20 @@ SRCSFLS = ft_printf.c \
 			ft_putnbr_u_base.c \
 			ft_putnbr_u_fd.c \
 			ft_puthex.c \
-			ft_int_to_hex.c \
 			ft_unbrlen.c \
 			ft_utoa.c \
 			ft_utils_s.c \
 			ft_utils_d.c \
+			ft_utils_d_2.c \
 			ft_utils_ptr.c \
+			ft_utils_ptr_2.c \
 			ft_utils_u.c \
 			ft_handlers_d.c \
 			ft_handlers_u.c \
-			ft_handlers_ptr.c \
 			ft_treat_x.c \
 			ft_utils_x.c \
 			ft_utils_x_2.c \
 			ft_handlers_x.c \
-			ft_treat_long.c \
-			ft_handlers_long.c \
 			synthesis.c 
 
 SRCS =  $(addprefix srcs/, $(SRCSFLS))
@@ -43,7 +41,6 @@ FLAGS = -c -Wall -Wextra -Werror
 INCLUDES = -I./includes
 
 OBJS = $(SRCS:.c=.o)
-OBJSD = $(addprefix objs/, $(OBJS))
 
 $(NAME): $(OBJS)
 	$(MAKE) bonus -C ./libft

@@ -15,6 +15,7 @@ CHECKERSRC=checker_ops.c \
 			checker_ops_3.c
 
 SRCS=checks.c \
+		checks_utils.c \
 		utils.c \
 		utils_2.c \
 		ops.c \
