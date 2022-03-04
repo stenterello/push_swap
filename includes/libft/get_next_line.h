@@ -16,6 +16,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 7
@@ -26,7 +27,6 @@ char	*get_line(char *save_read);
 char	*free_and_check(char *save_read, char *help);
 char	*update(int fd, char *save_read);
 char	*subtract_line(char *save_read);
-size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char	*ft_strjoin_plus(char *s1, char *s2);

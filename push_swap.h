@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "includes/includes/ft_printf.h"
+# include "includes/libft/libft.h"
 
 typedef struct s_stack
 {
@@ -21,7 +22,6 @@ typedef struct s_stack
 	int	min;
 	int	max;
 	int	len;
-	int	*index;
 	int	*best;
 	int	best_len;
 }				t_stack;
@@ -36,6 +36,7 @@ typedef struct s_best_elem
 void	die(char *str);
 long	ft_atol(const char *str);
 int		ft_abs(int c);
+void	allocate(t_stack *a, t_stack *b, int argc);
 void	checks(int argc, char **argv, t_stack *a);
 void	find_half(t_stack *a);
 void	move_one_up(t_stack *st);
@@ -51,6 +52,17 @@ void	rr(t_stack *a, t_stack *b);
 void	rra(t_stack *a, int pr);
 void	rrb(t_stack *b, int pr);
 void	rrr(t_stack *a, t_stack *b);
+void	checker_sa(t_stack *a);
+void	checker_sb(t_stack *b);
+void	checker_ss(t_stack *a, t_stack *b);
+void	checker_pa(t_stack *a, t_stack *b);
+void	checker_pb(t_stack *a, t_stack *b);
+void	checker_ra(t_stack *a);
+void	checker_rb(t_stack *b);
+void	checker_rr(t_stack *a, t_stack *b);
+void	checker_rra(t_stack *a);
+void	checker_rrb(t_stack *b);
+void	checker_rrr(t_stack *a, t_stack *b);
 int		find_place(t_stack *a, int c);
 int		find_min_arr(int *arr, int len);
 int		find_max_arr(int *arr, int len);

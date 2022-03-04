@@ -1,8 +1,20 @@
 NAME=push_swap
+
+CHECKERNAME=checker
+
 CC=gcc
+
 FLAGS=-Wall -Werror -Wextra -g
-SRCS=main.c \
-		checks.c \
+
+MAINSRC=main.c
+
+CHECKERMAIN=checker.c
+
+CHECKERSRC=checker_ops.c \
+			checker_ops_2.c \
+			checker_ops_3.c
+
+SRCS=checks.c \
 		utils.c \
 		utils_2.c \
 		ops.c \
@@ -19,11 +31,12 @@ SRCS=main.c \
 		seq_utils.c
 
 OBJS=$(SRCS:.c=.o)
+
 LIBPRINTF=./includes/libftprintf.a
 
 
-$(NAME): $(OBJS) $(LIBPRINTF)
-	$(CC) $(FLAGS) $(SRCS) $(LIBPRINTF) -o $(NAME)
+$(NAME): $(OBJS) $(LIBPRINTF) main.o
+	$(CC) $(FLAGS) $(MAINSRC) $(SRCS) $(LIBPRINTF) -o $(NAME)
 
 all: $(NAME)
 
@@ -34,6 +47,9 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) fclean -C ./includes
+
+bonus: $(NAME) checker.o
+	$(CC) $(FLAGS) $(CHECKERMAIN) $(CHECKERSRC) $(SRCS) $(LIBPRINTF) -o $(CHECKERNAME)
 
 re: fclean all
 

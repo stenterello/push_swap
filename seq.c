@@ -33,32 +33,6 @@ int	get_next(t_stack *a, int prev)
 	return (find_ind(a, save));
 }
 
-void	get_indexes(t_stack *a)
-{
-	int	ind;
-	int	rem;
-	int	i;
-
-	a->index = ft_calloc(a->len, sizeof(int));
-	if (!a->index)
-		return ;
-	i = 0;
-	while (i < a->len)
-	{
-		if (i > 0)
-		{
-			ind = get_next(a, rem);
-			rem = a->arr[ind];
-		}
-		else
-		{
-			ind = find_ind(a, a->min);
-			rem = a->min;
-		}
-		a->index[ind] = i++;
-	}
-}
-
 void	create_n(int len, t_best_elem *n, int *arr)
 {
 	int	i;
@@ -109,6 +83,8 @@ void	get_lis(int *arr, int len, t_stack *a)
 		die("Malloc error");
 	create_n(len, n, arr);
 	p = ft_calloc(len, sizeof(*n));
+	if (!p)
+		die("Malloc error");
 	create_p(len, n, p);
 	i = 0;
 	a->best = ft_calloc(a->len, sizeof(int));

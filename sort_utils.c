@@ -34,14 +34,13 @@ void	sort_small(t_stack *a)
 
 void	sort_medium(t_stack *a, t_stack *b)
 {
-	find_min(a);
-	while (find_ind(a, a->min))
-		ra(a, 1);
-	pb(a, b);
-	find_min(a);
-	while (find_ind(a, a->min))
-		ra(a, 1);
-	pb(a, b);
+	while (a->len > 3)
+	{
+		find_min(a);
+		while (find_ind(a, a->min))
+			ra(a, 1);
+		pb(a, b);
+	}
 	find_values(a);
 	sort_small(a);
 	find_values(a);

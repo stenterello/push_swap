@@ -69,3 +69,15 @@ int	in_rev_order(t_stack *st)
 	}
 	return (1);
 }
+
+void	allocate(t_stack *a, t_stack *b, int argc)
+{
+	a->arr = ft_calloc(argc, sizeof(int));
+	if (!a->arr)
+		die("Malloc error");
+	a->len = argc - 1;
+	b->arr = ft_calloc(argc, sizeof(int));
+	if (!b->arr)
+		die("Malloc error");
+	b->len = 0;
+}

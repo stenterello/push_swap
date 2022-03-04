@@ -106,7 +106,7 @@ void	treat_max(t_stack *a, t_stack *b, int *ind)
 		}
 		while (find_ind(a, a->max))
 			ra(a, 1);
-		if (!find_ind(a, a->max))
+		if (!find_ind(a, a->max) && a->len > 1)
 			ra(a, 1);
 	}
 }

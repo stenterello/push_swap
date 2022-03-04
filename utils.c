@@ -52,25 +52,6 @@ int	ft_abs(int c)
 	return (c);
 }
 
-// void	find_half(t_stack *a)
-// {
-// 	int	diff;
-// 	int	i;
-
-// 	i = 0;
-// 	a->half = a->arr[i];
-// 	diff = ft_abs(a->half - ((a->max - a->min) / 2));
-// 	while (i < a->len)
-// 	{
-// 		if (ft_abs(a->arr[i] - ((a->max - a->min) / 2)) < diff)
-// 		{
-// 			a->half = a->arr[i];
-// 			diff = ft_abs(a->half - ((a->max - a->min) / 2));
-// 		}
-// 		i++;
-// 	}
-// }
-
 int	find_ind(t_stack *st, int val)
 {
 	int	i;

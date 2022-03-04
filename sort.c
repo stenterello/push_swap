@@ -35,17 +35,17 @@ void	find_place_and_insert(t_stack *a, t_stack *b, int ind)
 
 	i = 0;
 	find_values(a);
-	if (b->arr[ind] < a->max && b->arr[ind] > a->min)
+	if (b->arr[ind] < a->max && b->arr[ind] > a->min && a->len != 0)
 	{
 		treat_between(a, b, &ind, &i);
 		move_b(&ind, b);
 	}
-	else if (b->arr[ind] < a->min)
+	else if (b->arr[ind] < a->min && a->len != 0)
 	{
 		treat_min(a, b, &ind);
 		move_b(&ind, b);
 	}
-	else if (b->arr[ind] > a->max)
+	else if (b->arr[ind] > a->max && a->len != 0)
 	{
 		treat_max(a, b, &ind);
 		move_b(&ind, b);
@@ -92,7 +92,7 @@ void	sort(t_stack *a, t_stack *b)
 	range(a, b, a->min, a->max);
 	fill_range(a, b, a->min, 0);
 	find_values(a);
-	while (find_ind(a, a->min) > a->len / 2 && find_ind(a, a->min))
+	while (find_ind(a, a->min) >= a->len / 2 && find_ind(a, a->min))
 		rra(a, 1);
 	while (find_ind(a, a->min) < a->len / 2 && find_ind(a, a->min))
 		ra(a, 1);

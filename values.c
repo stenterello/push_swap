@@ -44,7 +44,10 @@ int	get_med(t_stack *a, int min_limit, int limit)
 		}
 		i++;
 	}
-	return (sum / c);
+	if (c != 0)
+		return (sum / c);
+	else
+		return (a->min);
 }
 
 int	get_half(t_stack *a, int min_limit, int limit)
@@ -56,6 +59,7 @@ int	get_half(t_stack *a, int min_limit, int limit)
 
 	med = get_med(a, min_limit, limit);
 	i = 0;
+	ret = 0;
 	while (a->arr[i] < min_limit || a->arr[i] > limit)
 		i++;
 	diff = ft_abs(med - a->arr[i]);

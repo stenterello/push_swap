@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-void	allocate(t_stack *a, t_stack *b, int argc)
-{
-	a->arr = ft_calloc(argc, sizeof(int));
-	if (!a->arr)
-		die("Malloc error");
-	a->len = argc - 1;
-	b->arr = ft_calloc(argc, sizeof(int));
-	if (!b->arr)
-		die("Malloc error");
-	b->len = 0;
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	a;
@@ -40,12 +28,12 @@ int	main(int argc, char **argv)
 		else if (!in_order(&a) && a.len < 6)
 			sort_medium(&a, &b);
 		else if (!in_order(&a))
+		{
 			sort(&a, &b);
-		free(a.arr);
+			free(a.best);
+		}
+		//free(a.arr);
 		free(b.arr);
-		if (a.index)
-			free(a.index);
-		free(a.best);
 	}
 	return (0);
 }

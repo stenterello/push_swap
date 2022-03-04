@@ -12,24 +12,34 @@
 
 #include "push_swap.h"
 
+int	check_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (*(str + i) != '\0')
+	{
+		if (!ft_isdigit(*(str + i)))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 static void	check_int_and_fill(int argc, char **argv, t_stack *a)
 {
 	int		i;
-	int		i2;
 	long	tmp;
+	int		dig;
 
 	i = 0;
-	i2 = 0;
 	while (i < argc - 1)
 	{
+		dig = check_char(argv[i + 1]);
+		if (dig)
+			die("Error");
 		if ((int)ft_strlen(argv[i + 1]) > 11)
 			die("Error");
-		while (i2 < (int)ft_strlen(argv[i + 1]))
-		{
-			if (!ft_isdigit(argv[i + 1][i2]) && argv[i + 1][i2] != '-')
-				die("Error");
-			i2++;
-		}
 		tmp = ft_atol(argv[i + 1]);
 		if (tmp > 2147483647 || tmp < -2147483648)
 			die("Error");
