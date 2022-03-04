@@ -12,13 +12,17 @@
 
 #include "../includes/ft_printf.h"
 
+int	ft_deep_elaborate_aux(int *i, int orig)
+{
+	*i = orig;
+	return (0);
+}
+
 int	ft_deep_elaborate(const char *s, int *i, va_list args)
 {
 	t_print	arg;
 	int		orig;
-	int		counter;
 
-	counter = 0;
 	orig = *i;
 	arg = ft_init_flags();
 	if (ft_isflag(s[*i]))
@@ -37,12 +41,8 @@ int	ft_deep_elaborate(const char *s, int *i, va_list args)
 		*i += 1;
 	}
 	else
-	{
-		*i = orig;
-		return (0);
-	}
-	counter += synthesis(args, &arg);
-	return (counter);
+		ft_deep_elaborate_aux(i, orig);
+	return (synthesis(args, &arg));
 }
 
 int	ft_istype(char c)

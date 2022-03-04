@@ -5,16 +5,16 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "gcc - Compila ed esegui il debug del file attivo",
+			"name": "(lldb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${fileDirname}/${fileBasenameNoExtension}",
-			"args": [],
+			"program": "${workspaceFolder}/checker",
+			"args": ["1", "2", "3"],
 			"stopAtEntry": false,
-			"cwd": "${fileDirname}",
+			"cwd": "${workspaceFolder}",
 			"environment": [],
 			"externalConsole": false,
-			"MIMode": "gdb",
+			"MIMode": "lldb",
 			"setupCommands": [
 				{
 					"description": "Abilita la riformattazione per gdb",
@@ -22,8 +22,8 @@
 					"ignoreFailures": true
 				}
 			],
-			"preLaunchTask": "C/C++: gcc compila il file attivo",
-			"miDebuggerPath": "/usr/bin/gdb"
+			//"preLaunchTask": "C/C++: gcc compila il file attivo",
+			//"miDebuggerPath": "/usr/bin/gdb"
 		}
 	]
 }

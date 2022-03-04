@@ -74,7 +74,6 @@ void	ft_add_data(t_print *arg, char *str, int data)
 		free(text);
 }
 
-
 int	ft_treat_d(va_list args, t_print *arg)
 {
 	int		data;

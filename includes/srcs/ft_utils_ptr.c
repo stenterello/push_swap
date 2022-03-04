@@ -14,10 +14,13 @@
 
 void	ft_if_add_zero_ptr(t_print *arg, char *str, size_t data)
 {
-	if (arg->minus && arg->prec < arg->width && arg->prec > ft_ptrnbrlen(data, 16))
+	int	len;
+
+	len = ft_ptrnbrlen(data, 16);
+	if (arg->minus && arg->prec < arg->width && arg->prec > len)
 		ft_memset(str, '0', arg->prec);
 	else if (!arg->minus && arg->prec < arg->width
-		&& arg->prec > ft_ptrnbrlen(data, 16))
+		&& arg->prec > len)
 		ft_memset(&str[arg->width - arg->prec], '0', arg->prec);
 	else if (arg->minus && arg->prec && arg->prec < arg->width)
 		ft_memset(str, '0', arg->prec + 1);
@@ -25,7 +28,8 @@ void	ft_if_add_zero_ptr(t_print *arg, char *str, size_t data)
 
 int	ft_add_minus_ptr(t_print *arg, char *str, size_t data)
 {
-	if (arg->width > ft_ptrnbrlen(data, 16) && arg->prec > ft_ptrnbrlen(data, 16)
+	if (arg->width > ft_ptrnbrlen(data, 16)
+		&& arg->prec > ft_ptrnbrlen(data, 16)
 		&& arg->prec && arg->width)
 	{
 		str[ft_strlen(str) - arg->prec - 1] = '-';

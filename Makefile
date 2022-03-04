@@ -4,7 +4,7 @@ CHECKERNAME=checker
 
 CC=gcc
 
-FLAGS=-Wall -Werror -Wextra -g
+FLAGS=-Wall -Werror -Wextra
 
 MAINSRC=main.c
 
@@ -31,16 +31,22 @@ SRCS=checks.c \
 		seq_utils.c
 
 OBJS=$(SRCS:.c=.o)
+MAINOBJ=$(MAINSRC:.c=.o)
+CHECKEROBJS=$(CHECKERSRC:.c=.o)
+CHECKERMAINOBJ=$(CHECKERMAIN:.c=.o)
 
 LIBPRINTF=./includes/libftprintf.a
 
 $(NAME): $(OBJS) $(LIBPRINTF) main.o
-	$(CC) $(FLAGS) $(MAINSRC) $(SRCS) $(LIBPRINTF) -o $(NAME)	
+	$(CC) $(FLAGS) $(MAINOBJ) $(OBJS) $(LIBPRINTF) -o $(NAME)	
 
 $(LIBPRINTF):
 	$(MAKE) -C ./includes/
 
 all: $(NAME)
+
+$(CHECKERNAME): $(OBJS) $(CHECKEROBJS) $(CHECKERMAINOBJ) $(LIBPRINTF)
+	$(CC) $(FLAGS) $(CHECKERMAINOBJ) $(CHECKEROBJS) $(OBJS) $(LIBPRINTF) -o $(CHECKERNAME)
 
 clean:
 	rm -f *.o
@@ -51,8 +57,7 @@ fclean: clean
 	rm -f $(CHECKERNAME)
 	$(MAKE) fclean -C ./includes
 
-bonus: all
-	$(CC) $(FLAGS) $(CHECKERMAIN) $(CHECKERSRC) $(SRCS) $(LIBPRINTF) -o $(CHECKERNAME)
+bonus: $(CHECKERNAME)
 
 re: fclean all
 

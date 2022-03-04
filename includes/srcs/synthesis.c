@@ -27,11 +27,9 @@ int	synthesis(va_list args, t_print *arg)
 		counter += ft_treat_d(args, arg);
 	if (arg->type == 'u')
 		counter += ft_treat_u(args, arg);
-	if (arg->type == 'x')
-		counter += ft_treat_x(args, arg);
-	if (arg->type == 'X')
+	if (arg->type == 'x' || arg->type == 'X')
 		counter += ft_treat_x(args, arg);
 	if (arg->type == '%')
-		counter += ft_treat_percent();
+		counter += ft_treat_percent(arg);
 	return (counter);
 }

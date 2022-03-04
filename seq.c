@@ -72,19 +72,24 @@ void	create_p(int len, t_best_elem *n, t_best_elem *p)
 	}
 }
 
+void	allocate_lists(t_best_elem *n, t_best_elem *p, int len)
+{
+	n = ft_calloc(len, sizeof(*n));
+	if (!n)
+		die("Malloc error");
+	p = ft_calloc(len, sizeof(*n));
+	if (!p)
+		die("Malloc error");
+}
+
 void	get_lis(int *arr, int len, t_stack *a)
 {
 	int			i;
 	t_best_elem	*p;
 	t_best_elem	*n;
 
-	n = ft_calloc(len, sizeof(*n));
-	if (!n)
-		die("Malloc error");
+	allocate_lists(n, p, len);
 	create_n(len, n, arr);
-	p = ft_calloc(len, sizeof(*n));
-	if (!p)
-		die("Malloc error");
 	create_p(len, n, p);
 	i = 0;
 	a->best = ft_calloc(a->len, sizeof(int));

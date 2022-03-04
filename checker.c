@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ddelladi <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/04 17:17:10 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/03/04 17:17:16 by ddelladi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	final_response(t_stack *a, t_stack *b)
@@ -70,7 +82,7 @@ int	initialize(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-	int	ret;
+	int		ret;
 
 	allocate(&a, &b, argc);
 	checks(argc, argv, &a);
@@ -79,11 +91,11 @@ int	initialize(int argc, char **argv)
 	return (ret);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int	ret;
 
-    if (argc > 1)
+	if (argc > 1)
 	{
 		ret = initialize(argc, argv);
 		if (ret)

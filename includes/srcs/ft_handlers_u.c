@@ -32,7 +32,7 @@ void	ft_handle_minus_u(t_print *arg, char *text, int data, char *str)
 	else if (arg->width >= num_len && arg->prec > dot_len)
 		ft_memcpy(&str[arg->prec - text_len], text, text_len);
 	else if (arg->width >= num_len && arg->prec > dot_len)
-		ft_memcpy(&str[arg->prec - text_len], text , text_len);
+		ft_memcpy(&str[arg->prec - text_len], text, text_len);
 	else if (arg->prec >= num_len)
 		ft_memcpy(&str[str_len - text_len], text, text_len);
 	else if (arg->prec >= num_len)

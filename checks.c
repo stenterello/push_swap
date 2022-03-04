@@ -12,20 +12,6 @@
 
 #include "push_swap.h"
 
-int	check_char(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (*(str + i) != '\0')
-	{
-		if (!ft_isdigit(*(str + i)) && *(str + i) != '-')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 static void	check_int_and_fill(int argc, char **argv, t_stack *a)
 {
 	int		i;
@@ -46,22 +32,6 @@ static void	check_int_and_fill(int argc, char **argv, t_stack *a)
 		a->arr[i++] = (int)tmp;
 	}
 	a->len = argc - 1;
-}
-
-void	count_2(t_stack *a, int c)
-{
-	int	i;
-	int	ret;
-
-	i = 0;
-	ret = 0;
-	while (i < a->len)
-	{
-		if (a->arr[i++] == c)
-			ret++;
-		if (ret > 1)
-			die("Error");
-	}
 }
 
 static void	check_dupl(t_stack *a)

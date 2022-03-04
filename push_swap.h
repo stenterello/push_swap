@@ -96,5 +96,7 @@ int		search_seq(t_stack *a);
 int		in_best(t_stack *a, int c);
 void	get_lis(int *arr, int len, t_stack *a);
 int		count(t_stack *a, int i, int counter);
+void	count_2(t_stack *a, int c);
+int		check_char(char *str);
 
 #endif

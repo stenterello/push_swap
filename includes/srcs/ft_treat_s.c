@@ -25,8 +25,6 @@ void	ft_add_data_s(t_print *arg, char *str, char *data)
 		ft_memcpy(&str[ft_strlen(str) - len], data, len);
 	else if (arg->dot && !arg->prec)
 		str[0] = '\0';
-	else if (!ft_strncmp(data, "(null)", 6) && arg->prec < (int)ft_strlen(data))
-		str[0] = '\0';
 	else if (arg->dot)
 		ft_memcpy(str, data, arg->prec);
 	str[ft_strlen(str)] = '\0';
