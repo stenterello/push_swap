@@ -4,7 +4,7 @@ CHECKERNAME=checker
 
 CC=gcc
 
-FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra -g
 
 MAINSRC=main.c
 
@@ -39,7 +39,7 @@ CHECKERMAINOBJ=$(CHECKERMAIN:.c=.o)
 LIBPRINTF=./includes/libftprintf.a
 
 $(NAME): $(OBJS) $(LIBPRINTF) main.o
-	$(CC) $(FLAGS) $(MAINOBJ) $(OBJS) $(LIBPRINTF) -o $(NAME)	
+	$(CC) $(FLAGS) $(MAINSRC) $(SRCS) $(LIBPRINTF) -o $(NAME)	
 
 $(LIBPRINTF):
 	$(MAKE) -C ./includes/
