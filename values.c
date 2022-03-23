@@ -61,7 +61,9 @@ int	get_half(t_stack *a, int min_limit, int limit)
 	i = 0;
 	ret = 0;
     if (limit <= min_limit)
+	{
         return (0);
+	}
 	while (a->arr[i] < min_limit || a->arr[i] > limit)
 		i++;
 	diff = ft_abs(med - a->arr[i]);

@@ -78,10 +78,10 @@ void	create_p(int len, t_best_elem *n, t_best_elem *p)
 
 void	allocate_lists(t_best_elem **n, t_best_elem **p, int len)
 {
-	*n = ft_calloc(len, sizeof(t_best_elem *));
+	*n = ft_calloc(len, sizeof(t_best_elem));
 	if (!*n)
 		die("Malloc error");
-	*p = ft_calloc(len, sizeof(t_best_elem *));
+	*p = ft_calloc(len, sizeof(t_best_elem));
 	if (!*p)
 		die("Malloc error");
 }
