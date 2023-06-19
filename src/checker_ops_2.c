@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops_2.c                                            :+:      :+:    :+:   */
+/*   checker_ops_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 16:25:57 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/03/02 16:25:58 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/03/04 17:16:25 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/03/04 17:16:27 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	ra(t_stack *a, int pr)
+void	checker_ra(t_stack *a)
 {
 	int	tmp;
 
 	tmp = a->arr[0];
 	move_one_up(a);
 	a->arr[a->len - 1] = tmp;
-	if (pr)
-		ft_printf("ra\n");
 }
 
-void	rb(t_stack *b, int pr)
+void	checker_rb(t_stack *b)
 {
 	int	tmp;
 
@@ -32,36 +30,29 @@ void	rb(t_stack *b, int pr)
 		tmp = b->arr[0];
 		move_one_up(b);
 		b->arr[b->len - 1] = tmp;
-		if (pr)
-			ft_printf("rb\n");
 	}
 }
 
-void	rr(t_stack *a, t_stack *b)
+void	checker_rr(t_stack *a, t_stack *b)
 {
-	ra(a, 0);
-	ra(b, 0);
-	ft_printf("rr\n");
+	checker_ra(a);
+	checker_ra(b);
 }
 
-void	rra(t_stack *a, int pr)
+void	checker_rra(t_stack *a)
 {
 	int	tmp;
 
 	tmp = a->arr[a->len - 1];
 	move_one_down(a);
 	a->arr[0] = tmp;
-	if (pr)
-		ft_printf("rra\n");
 }
 
-void	rrb(t_stack *b, int pr)
+void	checker_rrb(t_stack *b)
 {
 	int	tmp;
 
 	tmp = b->arr[b->len - 1];
 	move_one_down(b);
 	b->arr[0] = tmp;
-	if (pr)
-		ft_printf("rrb\n");
 }

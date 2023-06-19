@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops.c                                              :+:      :+:    :+:   */
+/*   checker_ops.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddelladi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/02 16:25:47 by ddelladi          #+#    #+#             */
-/*   Updated: 2022/03/02 16:25:49 by ddelladi         ###   ########.fr       */
+/*   Created: 2022/03/04 17:16:47 by ddelladi          #+#    #+#             */
+/*   Updated: 2022/03/04 17:16:50 by ddelladi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	sa(t_stack *a, int pr)
+void	checker_sa(t_stack *a)
 {
 	int	tmp;
 
@@ -21,12 +21,10 @@ void	sa(t_stack *a, int pr)
 		tmp = a->arr[0];
 		a->arr[0] = a->arr[1];
 		a->arr[1] = tmp;
-		if (pr)
-			ft_printf("sa\n");
 	}
 }
 
-void	sb(t_stack *b, int pr)
+void	checker_sb(t_stack *b)
 {
 	int	tmp;
 
@@ -35,19 +33,16 @@ void	sb(t_stack *b, int pr)
 		tmp = b->arr[0];
 		b->arr[0] = b->arr[1];
 		b->arr[1] = tmp;
-		if (pr)
-			ft_printf("sb\n");
 	}
 }
 
-void	ss(t_stack *a, t_stack *b)
+void	checker_ss(t_stack *a, t_stack *b)
 {
-	sa(a, 0);
-	sb(b, 0);
-	ft_printf("ss\n");
+	checker_sa(a);
+	checker_sb(b);
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	checker_pa(t_stack *a, t_stack *b)
 {
 	int	tmp;
 
@@ -59,11 +54,10 @@ void	pa(t_stack *a, t_stack *b)
 		a->arr[0] = tmp;
 		b->len--;
 		a->len++;
-		ft_printf("pa\n");
 	}
 }
 
-void	pb(t_stack *a, t_stack *b)
+void	checker_pb(t_stack *a, t_stack *b)
 {
 	int	tmp;
 
@@ -75,6 +69,5 @@ void	pb(t_stack *a, t_stack *b)
 		b->arr[0] = tmp;
 		a->len--;
 		b->len++;
-		ft_printf("pb\n");
 	}
 }
